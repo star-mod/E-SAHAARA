@@ -1,0 +1,14 @@
+# Compiled class files
+*.class
+out/
+bin/
+build/
+
+# Runtime persisted data (auto-generated on first run)
+sahaara_connect.data
+
+# OS/editor junk
+.DS_Store
+.idea/
+.vscode/
+*.iml
