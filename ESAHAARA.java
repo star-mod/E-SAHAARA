@@ -20,7 +20,10 @@ import java.io.ByteArrayInputStream;
 public class ESAHAARA{
     public static void main(String[] args) throws Exception {
         AppState state = AppState.loadOrNew(new File("esahaara_connect.data"));
-        HttpServer server = HttpServer.create(new InetSocketAddress(8085), 0);
+        int port = Integer.parseInt(
+    System.getenv().getOrDefault("PORT", "8085"));
+
+HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         server.setExecutor(Executors.newCachedThreadPool());
  
         Router r = new Router(state);
@@ -52,7 +55,8 @@ public class ESAHAARA{
         server.start();
         System.out.println("========================================");
         System.out.println("  E-Sahaara Connect is running!");
-        System.out.println("  Open in browser: http://localhost:8085");
+        System.out.println("Server running on port " + port);
+        System.out.println("Open in browser: http://localhost:" + port);
         System.out.println("  Login with demo@esahaara.org / demo123");
         System.out.println("  (or sign up / continue as guest)");
         System.out.println("========================================");
